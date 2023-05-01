@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+.bg-main {
+  background-color: #3778c2;
+}
+
+.bg-second {
+  background-color: #5fb523;
+}
+
+.text-1 {
+  color: #434b53;
+}
+
+.text-2 {
+  color: #545c67;
+}
+
+.text-3 {
+  color: #86898e;
+}
+
+.text-4 {
+  color: #989da3;
+}
+
+.btn {
+  border: none;
+  margin-inline: auto;
+}
