@@ -1,4 +1,4 @@
-<%= form_with(model: operation) do |form| %>
+<%= form_with(model: operation, url: group_operation_path(@group)) do |form| %>
     <% if operation.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(operation.errors.count, "error") %> prohibited this operation from being saved:</h2>

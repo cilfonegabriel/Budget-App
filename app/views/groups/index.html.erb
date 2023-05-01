@@ -1,14 +1,20 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Groups</h1>
-
-<div id="groups">
-  <% @groups.each do |group| %>
-    <%= render group %>
-    <p>
-      <%= link_to "Show this group", group %>
-    </p>
-  <% end %>
+<div class="nav bg-main d-flex justify-content-between align-items-center p-2">
+  <%= button_to "< Log out", destroy_user_session_path, method: :delete, class: 'bg-transparent text-white m-0 border-0 text-decoration-none' %>
+  <h5 class='text-white m-0 py-2'>TRANSACTIONS</h5>
+  <%= link_to 'home', '/user', class: "text-white m-0 border-0 text-decoration-none px-2" %>
 </div>
 
-<%= link_to "New group", new_group_path %>
+<div class="container p-0">
+  <div id="groups">
+    <% @groups.each do |group| %>
+      <%= link_to(group_operations_path(group), class: "text-decoration-none link-dark") do%>
+        <%= render group %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="bg-second d-flex justify-content-center fixed-bottom">
+  <div style="width: 100%;" class="p-2 m-2">
+    <%= button_to "NEW GROUP", new_group_path, method: :get, class: 'bg-transparent border w-100 py-2 text-white' %>
+  </div>
+</div>
