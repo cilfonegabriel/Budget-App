@@ -4,7 +4,7 @@ class Group < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
- 
+
   def value
     value = 0
     operations&.each do |op|
