@@ -1,17 +1,13 @@
-<div id="<%= dom_id operation %>">
-  <p>
-    <strong>Author:</strong>
-    <%= operation.author %>
-  </p>
+<div class='m-2 p-2 border d-flex justify-content-between' id="<%= dom_id operation %>">
+  <div class='d-flex gap-4 mx-2'>  
+    <div class='d-flex flex-column justify-content-between'>
+      <strong><%= operation.name %></strong>
+      <span class='small'><%= operation.author %></span>
+      <span class='small'><%= operation.created_at.to_date %></span>
+    </div>
+  </div>
 
-  <p>
-    <strong>Name:</strong>
-    <%= operation.name %>
-  </p>
-
-  <p>
-    <strong>Amount:</strong>
-    <%= operation.amount %>
-  </p>
-
+  <div class='m-2 d-flex align-items-center' >
+    <strong class='text-center align-middle' ><%= number_to_currency(operation.amount, precision: 2) %></strong>
+  </div>
 </div>

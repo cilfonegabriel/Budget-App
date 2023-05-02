@@ -79,6 +79,9 @@ GEM
       popper_js (>= 2.11.6, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bullet (7.0.7)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     cancancan (3.5.0)
     capybara (3.39.0)
       addressable
@@ -232,6 +235,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2023.3)
       tzinfo (>= 1.0.0)
+    uniform_notifier (1.16.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -257,6 +261,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap
+  bullet
   cancancan
   capybara
   debug

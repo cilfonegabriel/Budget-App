@@ -1,4 +1,4 @@
-<%= form_with(model: operation, url: group_operation_path(@group)) do |form| %>
+<%= form_with model: operation, url: group_operations_path, method: :post do |form| %>
     <% if operation.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(operation.errors.count, "error") %> prohibited this operation from being saved:</h2>
@@ -11,28 +11,24 @@
       </div>
     <% end %>
   
-    <div>
-      <%= form.label :author, style: "display: block" %>
-      <%= form.text_field :author %>
+    <div class="mt-3 d-flex flex-column gap-2 border border-1">
+        <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Operation name', class: 'border-0 border-bottom p-2' %>
+        <%= form.number_field :amount, autofocus: true, placeholder: 'Operation amount', class: 'border-0 border-bottom p-2' %>
+        <div class="d-flex gap-5 flex-wrap px-3">
+          <% @categories.each do |cat| %>
+            <div>
+              <%= form.check_box :categories,{ multiple: true }, cat.id, nil %>
+              <%= form.label cat.name %>
+            </div>
+          <% end %>
+        </div>
+        
     </div>
   
-    <div>
-      <%= form.label :references, style: "display: block" %>
-      <%= form.text_field :references %>
-    </div>
-  
-    <div>
-      <%= form.label :name, style: "display: block" %>
-      <%= form.text_field :name %>
-    </div>
-  
-    <div>
-      <%= form.label :amount, style: "display: block" %>
-      <%= form.text_field :amount %>
-    </div>
-  
-    <div>
-      <%= form.submit %>
+    <div class="bg-second d-flex justify-content-center fixed-bottom">
+      <div style="width: 100%;" class="p-2 m-2">
+        <%= form.submit 'Submit', class: 'bg-transparent border w-100 py-2 text-white' %>
+      </div>
     </div>
   <% end %>
   

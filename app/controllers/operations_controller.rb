@@ -5,7 +5,7 @@ class OperationsController < ApplicationController
   # GET /operations or /operations.json
   def index
     @group = Group.find(params[:group_id])
-    @operations = @group.operations
+    @operations = @group.operations.order(created_at: :desc)
   end
 
   # GET /operations/1 or /operations/1.json
@@ -15,6 +15,7 @@ class OperationsController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     @operation = Operation.new
+    @categories = Group.all.order(name: :desc)
   end
 
   # GET /operations/1/edit
@@ -22,11 +23,20 @@ class OperationsController < ApplicationController
 
   # POST /operations or /operations.json
   def create
+    @group = Group.find(params[:group_id])
     @operation = Operation.new(operation_params)
-
+    @operation.author = current_user.name
+    @operation.user = current_user
+    if params[:operation][:categories].nil?
+      @operation.groups.push(@group) unless @operation.groups.include?(@group)
+    else
+      params[:operation][:categories].each do |id|
+        @operation.groups.push(Group.find(id)) unless @operation.groups.include?(Group.find(id))
+      end
+    end
     respond_to do |format|
       if @operation.save
-        format.html { redirect_to operation_url(@operation), notice: 'Operation was successfully created.' }
+        format.html { redirect_to group_operations_url(@group), notice: 'Operation was successfully created.' }
         format.json { render :show, status: :created, location: @operation }
       else
         format.html { render :new, status: :unprocessable_entity }

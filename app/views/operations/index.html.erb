@@ -1,11 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="nav bg-main d-flex justify-content-between align-items-center p-2">
+  <%= link_to '< Back', '/user', class: "text-white m-0 border-0 text-decoration-none px-2" %>
+  <h5 class='text-white m-0 py-2'><%= @group.name %></h5>
+  <%= link_to 'Home', '/user', class: "text-white m-0 border-0 text-decoration-none px-2" %>
+</div>
 
-<h1>Operations</h1>
+<h1 class="bg-second text-center">Total: <%= number_to_currency(@group.value, precision: 2) %></h1>
 
-<div id="operations">
+<div id="operations" class="mb-5 pb-5">
   <% @operations.each do |operation| %>
     <%= render operation %>
   <% end %>
 </div>
 
-<%= link_to "New operation", new_group_operation_path(@group) %>
+<div class="bg-second d-flex justify-content-center fixed-bottom">
+  <div style="width: 100%;" class="p-2 m-2">
+    <%= button_to "NEW OPERATION", new_group_operation_path(@group), method: :get, class: 'bg-transparent border w-100 py-2 text-white' %>
+  </div>
+</div>

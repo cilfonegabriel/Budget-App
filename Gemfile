@@ -76,4 +76,5 @@ end
 
 # Bootstrap
 gem 'bootstrap'
+gem 'bullet'
 gem 'cancancan'

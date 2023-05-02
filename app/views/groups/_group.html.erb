@@ -11,6 +11,6 @@
 
 
   <div class='m-2 d-flex align-items-center' >
-    <strong class='text-center align-middle' >$ <%= group.value %></strong>
+    <strong class='text-center align-middle' ><%= number_to_currency(group.value, precision: 2) %></strong>
   </div>
 </div>
