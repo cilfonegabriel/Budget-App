@@ -15,6 +15,7 @@ class OperationsController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     @operation = Operation.new
+    @categories = Group.all.order(name: :desc)
   end
 
   # GET /operations/1/edit
@@ -26,8 +27,13 @@ class OperationsController < ApplicationController
     @operation = Operation.new(operation_params)
     @operation.author = current_user.name
     @operation.user = current_user
-    @operation.groups.push(@group) unless @operation.groups.include?(@group)
-
+    if params[:operation][:categories].nil?
+        @operation.groups.push(@group) unless @operation.groups.include?(@group)
+      else
+        params[:operation][:categories].each do |id|
+          @operation.groups.push(Group.find(id)) unless @operation.groups.include?(Group.find(id))
+        end
+      end
     respond_to do |format|
       if @operation.save
         format.html { redirect_to group_operations_url(@group), notice: 'Operation was successfully created.' }

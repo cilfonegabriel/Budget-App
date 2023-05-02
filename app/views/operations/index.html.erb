@@ -6,7 +6,7 @@
 
 <h1 class="bg-second text-center">Total: <%= number_to_currency(@group.value, precision: 2) %></h1>
 
-<div id="operations">
+<div id="operations" class="mb-5 pb-5">
   <% @operations.each do |operation| %>
     <%= render operation %>
   <% end %>
