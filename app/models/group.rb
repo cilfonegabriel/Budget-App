@@ -13,7 +13,7 @@ class Group < ApplicationRecord
     end
     value
   end
-  
+
   private
 
   def add_default_image
