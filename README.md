@@ -59,6 +59,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - [Live Demo Link](https://budget-app-gqyi.onrender.com)
+- [Live Presentation Link](https://www.loom.com/share/c3613de8a23d43a6b1edf0dc592bd3ce)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
