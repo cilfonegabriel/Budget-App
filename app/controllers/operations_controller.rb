@@ -14,8 +14,9 @@ class OperationsController < ApplicationController
   # GET /operations/new
   def new
     @group = Group.find(params[:group_id])
+    user = @group.user
     @operation = Operation.new
-    @categories = Group.all.order(name: :desc)
+    @categories = Group.where(user_id: user.id).order(name: :desc)
   end
 
   # GET /operations/1/edit
