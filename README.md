@@ -71,7 +71,7 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project:
 
-- [ ] You’ll need to have Ruby on your machine.
+- [ ] You’ll need to have Ruby on your machine .
 
 Optionally, in order to modify this project you should to have installed:
 
